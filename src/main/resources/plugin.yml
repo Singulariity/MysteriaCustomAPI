@@ -1,0 +1,6 @@
+name: CustomAPI
+version: ${project.version}
+main: com.mysteria.customapi.CustomAPIPlugin
+api-version: 1.16
+authors: [ Singularity ]
+softdepend: [ MysteriaUtils, ProtocolLib, MysteriaSanity ]
