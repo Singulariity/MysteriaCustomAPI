@@ -9,6 +9,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+@CommandAlias("addenchant")
 public class AddEnchantCommand extends BaseCommand {
 
 	@Default

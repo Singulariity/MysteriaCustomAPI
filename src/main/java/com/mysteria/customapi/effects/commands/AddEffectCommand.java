@@ -11,6 +11,7 @@ import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+@CommandAlias("addeffect")
 public class AddEffectCommand extends BaseCommand {
 
 	@Default
