@@ -7,6 +7,7 @@ import com.mysteria.utils.MysteriaUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+@CommandAlias("customitem")
 public class CustomItemCommand extends BaseCommand {
 
 	@Default

@@ -2,7 +2,6 @@ package com.mysteria.customapi.effects.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
-import com.mojang.brigadier.Command;
 import com.mysteria.utils.MysteriaUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -10,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+@CommandAlias("giveeffect")
 public class GiveEffectCommand extends BaseCommand {
 
 	@Default
