@@ -14,7 +14,7 @@ public class GiveEffectCommand extends BaseCommand {
 
 	@Default
 	@CommandPermission("customapi.giveeffect")
-	@CommandCompletion("@players @potiontype @potionduration @range:0-5")
+	@CommandCompletion("@players @potiontype @potionduration @range:0-5 @nothing")
 	@Syntax("<player> <type> [duration] [amplifier]")
 	@Description("Gives an effect to the target player.")
 	public void onCommand(CommandSender sender, String[] args) {

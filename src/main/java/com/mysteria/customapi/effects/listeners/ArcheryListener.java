@@ -28,6 +28,7 @@ public class ArcheryListener implements Listener {
 
 		if (effect != null && MysteriaUtils.chance(20 + 10 * effect.getAmplifier())) {
 			e.setConsumeItem(false);
+			((Player) e.getEntity()).updateInventory();
 			if (e.getProjectile() instanceof AbstractArrow) {
 				((AbstractArrow) e.getProjectile()).setPickupStatus(AbstractArrow.PickupStatus.CREATIVE_ONLY);
 			}

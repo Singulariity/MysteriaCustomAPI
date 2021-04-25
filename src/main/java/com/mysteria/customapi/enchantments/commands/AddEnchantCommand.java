@@ -14,7 +14,7 @@ public class AddEnchantCommand extends BaseCommand {
 
 	@Default
 	@CommandPermission("customapi.addenchant")
-	@CommandCompletion("@enchantment @range:1-5")
+	@CommandCompletion("@enchantment @range:1-5 @nothing")
 	@Syntax("<enchantment> [level]")
 	@Description("Adds an enchant to the held item. Ignores enchantment limit.")
 	public void onCommand(Player p, String[] args) {
