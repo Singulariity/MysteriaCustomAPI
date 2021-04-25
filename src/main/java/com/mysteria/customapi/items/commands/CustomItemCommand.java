@@ -7,12 +7,12 @@ import com.mysteria.utils.MysteriaUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandAlias("customitem")
+@CommandAlias("customitem|citem|givecitem")
 public class CustomItemCommand extends BaseCommand {
 
 	@Default
 	@CommandPermission("customapi.givecustomitem")
-	@CommandCompletion("@customitem @range:1-64")
+	@CommandCompletion("@customitem @range:1-64 @nothing")
 	@Syntax("<name> [amount]")
 	@Description("Give a custom item.")
 	public void onCommand(Player p, String[] args) {

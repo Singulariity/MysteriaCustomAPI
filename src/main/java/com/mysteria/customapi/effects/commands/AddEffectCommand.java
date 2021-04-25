@@ -16,7 +16,7 @@ public class AddEffectCommand extends BaseCommand {
 
 	@Default
 	@CommandPermission("customapi.addeffect")
-	@CommandCompletion("@potiontype @potionduration @range:0-5")
+	@CommandCompletion("@potiontype @potionduration @range:0-5 @nothing")
 	@Syntax("<type> <duration> <amplifier>")
 	@Description("Adds an effect to the held potion item.")
 	public void onCommand(Player p, String[] args) {
