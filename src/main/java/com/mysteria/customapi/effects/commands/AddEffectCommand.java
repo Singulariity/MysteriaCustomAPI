@@ -17,7 +17,7 @@ public class AddEffectCommand extends BaseCommand {
 	@Default
 	@CommandPermission("customapi.addeffect")
 	@CommandCompletion("@potiontype @potionduration @range:0-5 @nothing")
-	@Syntax("<type> <duration> <amplifier>")
+	@Syntax("<type> <seconds> <amplifier>")
 	@Description("Adds an effect to the held potion item.")
 	public void onCommand(Player p, String[] args) {
 		if (args.length < 3) {
@@ -43,7 +43,7 @@ public class AddEffectCommand extends BaseCommand {
 
 		int duration;
 		try {
-			duration = Integer.parseInt(args[1]);
+			duration = Math.max(1, Integer.parseInt(args[1]));
 		} catch (NumberFormatException ignored) {
 			MysteriaUtils.sendMessageDarkRed(p, "Type a valid duration.");
 			return;
@@ -51,14 +51,14 @@ public class AddEffectCommand extends BaseCommand {
 
 		int amplifier;
 		try {
-			amplifier = Integer.parseInt(args[2]);
+			amplifier = Math.max(0, Integer.parseInt(args[2]));
 		} catch (NumberFormatException ignored) {
 			MysteriaUtils.sendMessageDarkRed(p, "Type a valid amplifier.");
 			return;
 		}
 
 		EffectContainer container = EffectContainer.get(heldItem);
-		PotionEffect effect = new PotionEffect(type, duration, amplifier);
+		PotionEffect effect = new PotionEffect(type, duration * 20, amplifier);
 		container.addEffect(effect);
 		container.update();
 

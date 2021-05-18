@@ -21,5 +21,7 @@ public class CustomEffectType {
 	public static final PotionEffectType PURGE = new PurgeWrapper();
 	public static final PotionEffectType REWIND = new RewindWrapper();
 	public static final PotionEffectType FROSTBURN = new FrostburnWrapper();
+	public static final PotionEffectType CALAMITY = new CalamityWrapper();
+	public static final PotionEffectType SILENCE = new SilenceWrapper();
 
 }

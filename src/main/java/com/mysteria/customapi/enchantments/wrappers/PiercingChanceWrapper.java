@@ -73,22 +73,15 @@ public class PiercingChanceWrapper extends CustomEnchantmentWrapper {
 
 	@Override
 	public boolean conflictsWith(@NotNull Enchantment other) {
-		return other == CustomEnchantment.CRITICAL_CHANCE ||
-				other == CustomEnchantment.CRITICAL_DAMAGE;
+		return other == CustomEnchantment.CRITICAL_CHANCE;
 	}
 
 	@Override
 	public boolean canEnchantItem(@NotNull ItemStack item) {
-		return item.getType() == Material.NETHERITE_SWORD ||
-				item.getType() == Material.NETHERITE_HELMET ||
-				item.getType() == Material.NETHERITE_CHESTPLATE ||
-				item.getType() == Material.NETHERITE_LEGGINGS ||
-				item.getType() == Material.NETHERITE_BOOTS ||
-				item.getType() == Material.DIAMOND_SWORD ||
-				item.getType() == Material.DIAMOND_HELMET ||
-				item.getType() == Material.DIAMOND_CHESTPLATE ||
-				item.getType() == Material.DIAMOND_LEGGINGS ||
-				item.getType() == Material.DIAMOND_BOOTS ||
+		return getItemTarget().includes(item) ||
+				MaterialTags.AXES.isTagged(item) ||
+				EnchantmentTarget.TRIDENT.includes(item) ||
+				EnchantmentTarget.ARMOR.includes(item) ||
 				MaterialTags.BOWS.isTagged(item);
 	}
 

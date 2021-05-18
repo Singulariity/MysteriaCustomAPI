@@ -1,6 +1,5 @@
 package com.mysteria.customapi.enchantments.wrappers;
 
-import com.mysteria.customapi.enchantments.CustomEnchantment;
 import com.mysteria.customapi.enchantments.CustomEnchantmentWrapper;
 import com.mysteria.customapi.enchantments.EnchType;
 import net.kyori.adventure.text.Component;
@@ -70,7 +69,7 @@ public class MeltingCurseWrapper extends CustomEnchantmentWrapper {
 
 	@Override
 	public boolean conflictsWith(@NotNull Enchantment other) {
-		return other == DURABILITY || other == CustomEnchantment.UNBREAKABLE;
+		return other.equals(DURABILITY);
 	}
 
 	@Override

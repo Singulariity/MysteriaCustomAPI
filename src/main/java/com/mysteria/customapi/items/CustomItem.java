@@ -184,6 +184,9 @@ public enum CustomItem {
 			Component.text("Replaces all bonuses of an item by the\nsame number of randomly selected new bonuses.\nThe item should be enchanted with 30 levels before."),
 			Material.IRON_NUGGET,
 			ItemTag.GLOW),
+	BROKEN_TRIDENT(49,
+			null,
+			Material.IRON_NUGGET)
 	;
 
 

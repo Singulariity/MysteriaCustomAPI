@@ -1,5 +1,6 @@
 package com.mysteria.customapi.enchantments.wrappers;
 
+import com.destroystokyo.paper.MaterialTags;
 import com.mysteria.customapi.enchantments.CustomEnchantment;
 import com.mysteria.customapi.enchantments.CustomEnchantmentWrapper;
 import com.mysteria.customapi.enchantments.EnchType;
@@ -75,7 +76,9 @@ public class CriticalChanceWrapper extends CustomEnchantmentWrapper {
 
 	@Override
 	public boolean canEnchantItem(@NotNull ItemStack item) {
-		return getItemTarget().includes(item) || EnchantmentTarget.ARMOR.includes(item);
+		return getItemTarget().includes(item) ||
+				EnchantmentTarget.ARMOR.includes(item) ||
+				MaterialTags.BOWS.isTagged(item);
 	}
 
 	@Override

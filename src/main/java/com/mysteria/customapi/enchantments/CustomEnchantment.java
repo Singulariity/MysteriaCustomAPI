@@ -7,7 +7,7 @@ public class CustomEnchantment {
 
 	public static final Enchantment CRITICAL_DAMAGE = new CriticalDamageWrapper();
 	public static final Enchantment CRITICAL_CHANCE = new CriticalChanceWrapper();
-	public static final Enchantment FROSTBURN = new FrostburnWrapper();
+	public static final Enchantment FROSTBITE = new FrostbiteWrapper();
 	public static final Enchantment UNBREAKABLE = new UnbreakableWrapper();
 	public static final Enchantment SUFFERING_CURSE = new SufferingCurseWrapper();
 	public static final Enchantment TERIA_CURSE = new TeriaCurseWrapper();
@@ -26,5 +26,7 @@ public class CustomEnchantment {
 	public static final Enchantment POISON_RESISTANCE = new PoisonResistanceWrapper();
 	public static final Enchantment BLEED_RESISTANCE = new BleedResistanceWrapper();
 	public static final Enchantment WITHER_RESISTANCE = new WitherResistanceWrapper();
+	public static final Enchantment EMPRESS_BLESSING = new EmpressBlessingWrapper();
+	public static final Enchantment EXECUTIONER = new ExecutionerWrapper();
 
 }

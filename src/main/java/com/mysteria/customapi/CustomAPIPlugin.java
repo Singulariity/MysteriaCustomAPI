@@ -95,7 +95,7 @@ public final class CustomAPIPlugin extends JavaPlugin {
 			return list;
 		});
 		getCommandManager().getCommandCompletions().registerAsyncCompletion("potionduration", c ->
-				ImmutableList.of("200", "400", "600", "1200", "6000"));
+				ImmutableList.of("10", "20", "30", "40", "50", "60"));
 		getCommandManager().getCommandCompletions().registerAsyncCompletion("enchantment", c -> {
 			ArrayList<String> list = new ArrayList<>();
 			for (Enchantment enchantment : Enchantment.values()) {
@@ -127,12 +127,15 @@ public final class CustomAPIPlugin extends JavaPlugin {
 		new PrepareItemCraftListener();
 		// Effects
 		new ArcheryListener();
+		new CalamityListener();
 		new CamouflageListeners();
 		new CreativeShockListener();
 		new CurseListener();
 		new EntityPotionEffectListener();
 		new FeatherFallListener();
+		new PotionThrowListener();
 		new SicknessListener();
+		new SilenceListener();
 		// Death Message
 		new CustomDeathMessageListener();
 	}
@@ -140,7 +143,7 @@ public final class CustomAPIPlugin extends JavaPlugin {
 	private void registerAllEnchantments() {
 		registerEnchantment(CustomEnchantment.CRITICAL_DAMAGE);
 		registerEnchantment(CustomEnchantment.CRITICAL_CHANCE);
-		registerEnchantment(CustomEnchantment.FROSTBURN);
+		registerEnchantment(CustomEnchantment.FROSTBITE);
 		registerEnchantment(CustomEnchantment.UNBREAKABLE);
 		registerEnchantment(CustomEnchantment.SUFFERING_CURSE);
 		registerEnchantment(CustomEnchantment.TERIA_CURSE);
@@ -159,6 +162,8 @@ public final class CustomAPIPlugin extends JavaPlugin {
 		registerEnchantment(CustomEnchantment.POISON_RESISTANCE);
 		registerEnchantment(CustomEnchantment.BLEED_RESISTANCE);
 		registerEnchantment(CustomEnchantment.WITHER_RESISTANCE);
+		registerEnchantment(CustomEnchantment.EMPRESS_BLESSING);
+		registerEnchantment(CustomEnchantment.EXECUTIONER);
 	}
 
 	private void registerEnchantment(@Nonnull Enchantment enchantment) {
@@ -191,7 +196,7 @@ public final class CustomAPIPlugin extends JavaPlugin {
 				}
 			}
 
-			PotionEffectType[] newValues = new PotionEffectType[values.size() + 16];
+			PotionEffectType[] newValues = new PotionEffectType[values.size() + 18];
 
 			for (int i = 0; i < values.size(); i++) {
 				newValues[i] = values.get(i);
@@ -217,6 +222,8 @@ public final class CustomAPIPlugin extends JavaPlugin {
 		registerPotionEffectType(CustomEffectType.PURGE);
 		registerPotionEffectType(CustomEffectType.REWIND);
 		registerPotionEffectType(CustomEffectType.FROSTBURN);
+		registerPotionEffectType(CustomEffectType.CALAMITY);
+		registerPotionEffectType(CustomEffectType.SILENCE);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -274,7 +281,7 @@ public final class CustomAPIPlugin extends JavaPlugin {
 							}
 							else if (type == CustomEffectType.BLEED) {
 
-								entity.damage(0.7 + ((double) effect.getAmplifier() / 3));
+								entity.damage(0.6 + (effect.getAmplifier() * 0.4));
 								world.playEffect(entity.getLocation().add(0, 1.3, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
 
 							}
@@ -287,9 +294,9 @@ public final class CustomAPIPlugin extends JavaPlugin {
 											effect.getDuration(), amplifier));
 								}
 								if (MysteriaUtils.chance(50 + amplifier * 3)) {
-									double damage = 1 + (amplifier / 3d) +
-											(entity.isSwimming() ? 1 : 0) +
-											(inWater ? 1 : 0);
+									double damage = 0.5 + (amplifier * 0.3) +
+											(entity.isSwimming() ? 0.5 : 0) +
+											(inWater ? 0.5 : 0);
 									entity.damage(damage);
 								}
 
