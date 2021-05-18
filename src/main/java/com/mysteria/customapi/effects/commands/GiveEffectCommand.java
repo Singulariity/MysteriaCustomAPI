@@ -15,7 +15,7 @@ public class GiveEffectCommand extends BaseCommand {
 	@Default
 	@CommandPermission("customapi.giveeffect")
 	@CommandCompletion("@players @potiontype @potionduration @range:0-5 @nothing")
-	@Syntax("<player> <type> [duration] [amplifier]")
+	@Syntax("<player> <type> [seconds] [amplifier]")
 	@Description("Gives an effect to the target player.")
 	public void onCommand(CommandSender sender, String[] args) {
 		if (args.length < 2 || args.length > 4) {
@@ -37,7 +37,7 @@ public class GiveEffectCommand extends BaseCommand {
 		int duration;
 		if (args.length >= 3) {
 			try {
-				duration = Math.max(Integer.parseInt(args[2]), 20);
+				duration = Math.max(1, Integer.parseInt(args[2]));
 			} catch (NumberFormatException ignored) {
 				MysteriaUtils.sendMessageDarkRed(sender, "Type a valid duration.");
 				return;
@@ -47,7 +47,7 @@ public class GiveEffectCommand extends BaseCommand {
 		int amplifier;
 		if (args.length == 4) {
 			try {
-				amplifier = Math.max(Integer.parseInt(args[3]), 0);
+				amplifier = Math.max(0, Integer.parseInt(args[3]));
 			} catch (NumberFormatException ignored) {
 				MysteriaUtils.sendMessageDarkRed(sender, "Type a valid amplifier.");
 				return;
@@ -55,7 +55,7 @@ public class GiveEffectCommand extends BaseCommand {
 		} else amplifier = 0;
 
 
-		PotionEffect effect = new PotionEffect(type, duration, amplifier);
+		PotionEffect effect = new PotionEffect(type, duration * 20, amplifier);
 		target.addPotionEffect(effect);
 	}
 

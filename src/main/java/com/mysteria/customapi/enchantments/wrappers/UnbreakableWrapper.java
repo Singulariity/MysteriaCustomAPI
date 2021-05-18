@@ -1,6 +1,5 @@
 package com.mysteria.customapi.enchantments.wrappers;
 
-import com.mysteria.customapi.enchantments.CustomEnchantment;
 import com.mysteria.customapi.enchantments.CustomEnchantmentWrapper;
 import com.mysteria.customapi.enchantments.EnchType;
 import com.mysteria.utils.NamedColor;
@@ -73,7 +72,7 @@ public class UnbreakableWrapper extends CustomEnchantmentWrapper {
 
 	@Override
 	public boolean conflictsWith(@NotNull Enchantment other) {
-		return other == DURABILITY || other == CustomEnchantment.MELTING_CURSE;
+		return false;
 	}
 
 	@Override

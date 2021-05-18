@@ -21,7 +21,9 @@ public enum CustomSound {
 	OTHER_BOSS_AWOKEN("other.boss_awoken"),
 	ITEM_BLOODSTONE("item.bloodstone"),
 	MUSIC_GODSHOME("music.godshome"),
-	MUSIC_BOSS2("music.boss2");
+	MUSIC_BOSS2("music.boss2"),
+	ENCHANTMENT_EMPRESS_BLESSING("enchantment.empress_blessing"),
+	ENCHANTMENT_FROSTBITE("enchantment.frostbite");
 
 	private final String key;
 

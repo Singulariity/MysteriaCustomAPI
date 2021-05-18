@@ -1,8 +1,8 @@
 package com.mysteria.customapi.enchantments.wrappers;
 
+import com.destroystokyo.paper.MaterialTags;
 import com.mysteria.customapi.enchantments.CustomEnchantmentWrapper;
 import com.mysteria.customapi.enchantments.EnchType;
-import com.mysteria.utils.NamedColor;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -14,10 +14,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
-public class FrostburnWrapper extends CustomEnchantmentWrapper {
+public class ExecutionerWrapper extends CustomEnchantmentWrapper {
 
-	public FrostburnWrapper() {
-		super("frostburn");
+	public ExecutionerWrapper() {
+		super("executioner");
 	}
 
 	@NotNull
@@ -29,7 +29,7 @@ public class FrostburnWrapper extends CustomEnchantmentWrapper {
 	@Nullable
 	@Override
 	public TextColor getTextColor() {
-		return NamedColor.VANADYL_BLUE;
+		return null;
 	}
 
 	@Nullable
@@ -40,7 +40,7 @@ public class FrostburnWrapper extends CustomEnchantmentWrapper {
 
 	@Override
 	public @NotNull String getName() {
-		return "Frostburn";
+		return "Executioner";
 	}
 
 	@Override
@@ -75,11 +75,11 @@ public class FrostburnWrapper extends CustomEnchantmentWrapper {
 
 	@Override
 	public boolean canEnchantItem(@NotNull ItemStack item) {
-		return getItemTarget().includes(item);
+		return MaterialTags.AXES.isTagged(item);
 	}
 
 	@Override
 	public @NotNull Component displayName(int level) {
-		return Component.translatable("enchantment.minecraft.frostburn");
+		return Component.translatable("enchantment.minecraft.executioner");
 	}
 }

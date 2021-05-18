@@ -78,6 +78,7 @@ public enum ItemRarities {
 	SLIME_BALL(Rarity.UNCOMMON),
 	OBSIDIAN_SHARD(Rarity.UNCOMMON),
 	LEAF(Rarity.UNCOMMON),
+	QUARTZ(Rarity.UNCOMMON),
 
 	EMERALD_BAND(Rarity.RARE),
 	DIAMOND_BAND(Rarity.RARE),
@@ -115,6 +116,7 @@ public enum ItemRarities {
 	GOLD_BLOCK(Rarity.RARE),
 	GOLDEN_APPLE(Rarity.RARE),
 	DIAMOND_HORSE_ARMOR(Rarity.RARE),
+	BROKEN_TRIDENT(Rarity.RARE),
 	TRIDENT(Rarity.RARE),
 	WITHER_SKELETON_SKULL(Rarity.RARE),
 	FAIRY_DUST(Rarity.RARE),

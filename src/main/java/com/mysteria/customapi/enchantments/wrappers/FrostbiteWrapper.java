@@ -1,9 +1,8 @@
 package com.mysteria.customapi.enchantments.wrappers;
 
-import com.destroystokyo.paper.MaterialTags;
-import com.mysteria.customapi.enchantments.CustomEnchantment;
 import com.mysteria.customapi.enchantments.CustomEnchantmentWrapper;
 import com.mysteria.customapi.enchantments.EnchType;
+import com.mysteria.utils.NamedColor;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -15,20 +14,38 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
-public class CriticalDamageWrapper extends CustomEnchantmentWrapper {
+public class FrostbiteWrapper extends CustomEnchantmentWrapper {
 
-	public CriticalDamageWrapper() {
-		super("critical_damage");
+	public FrostbiteWrapper() {
+		super("frostbite");
+	}
+
+	@NotNull
+	@Override
+	public EnchType getType() {
+		return EnchType.LEVELED;
+	}
+
+	@Nullable
+	@Override
+	public TextColor getTextColor() {
+		return NamedColor.VANADYL_BLUE;
+	}
+
+	@Nullable
+	@Override
+	public Map<TextDecoration, TextDecoration.State> getTextDecorations() {
+		return null;
 	}
 
 	@Override
 	public @NotNull String getName() {
-		return "Critical Hit Damage";
+		return "Frostbite";
 	}
 
 	@Override
 	public int getMaxLevel() {
-		return 15;
+		return 5;
 	}
 
 	@Override
@@ -53,36 +70,16 @@ public class CriticalDamageWrapper extends CustomEnchantmentWrapper {
 
 	@Override
 	public boolean conflictsWith(@NotNull Enchantment other) {
-		return false;
+		return other.equals(FIRE_ASPECT);
 	}
 
 	@Override
 	public boolean canEnchantItem(@NotNull ItemStack item) {
-		return getItemTarget().includes(item) ||
-				EnchantmentTarget.ARMOR.includes(item) ||
-				MaterialTags.BOWS.isTagged(item);
+		return getItemTarget().includes(item);
 	}
 
 	@Override
 	public @NotNull Component displayName(int level) {
-		return Component.translatable("enchantment.minecraft.critical_damage");
-	}
-
-	@NotNull
-	@Override
-	public EnchType getType() {
-		return EnchType.PERCENT;
-	}
-
-	@Nullable
-	@Override
-	public TextColor getTextColor() {
-		return null;
-	}
-
-	@Nullable
-	@Override
-	public Map<TextDecoration, TextDecoration.State> getTextDecorations() {
-		return null;
+		return Component.translatable("enchantment.minecraft.frostbite");
 	}
 }

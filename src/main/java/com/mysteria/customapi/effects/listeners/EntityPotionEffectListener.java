@@ -2,12 +2,15 @@ package com.mysteria.customapi.effects.listeners;
 
 import com.mysteria.customapi.CustomAPIPlugin;
 import com.mysteria.customapi.deathmessage.enums.CustomDeathReason;
+import com.mysteria.customapi.effects.CustomEffect;
 import com.mysteria.customapi.effects.CustomEffectType;
 import com.mysteria.sanity.SanityPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
+import org.bukkit.craftbukkit.v1_16_R3.block.CraftEnchantingTable;
+import org.bukkit.craftbukkit.v1_16_R3.inventory.CraftInventoryEnchanting;
 import org.bukkit.entity.Boss;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
@@ -19,6 +22,7 @@ import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -58,6 +62,17 @@ public class EntityPotionEffectListener implements Listener {
 				effect = e.getNewEffect();
 				if (effect == null) break;
 
+				if (effect.getType() instanceof CustomEffect) {
+					if (effect.getType().isInstant()) {
+						new BukkitRunnable() {
+							@Override
+							public void run() {
+								((LivingEntity) e.getEntity()).removePotionEffect(effect.getType());
+							}
+						}.runTaskLater(CustomAPIPlugin.getInstance(), 1);
+					}
+				}
+
 				if (effect.getType() == CustomEffectType.DOOM) {
 					if (entity instanceof Monster) {
 						if (!(entity instanceof Boss)) {
@@ -69,22 +84,27 @@ public class EntityPotionEffectListener implements Listener {
 					if (entity instanceof Player) {
 						Player victim = (Player) entity;
 
-						ArrayList<ItemStack> contents = new ArrayList<>();
-						PlayerInventory inv = victim.getInventory();
-						for (int i = 0; i < 36; i++) {
-							contents.add(inv.getItem(i));
-							inv.setItem(i, null);
-						}
-						contents.add(inv.getItem(40));
-						inv.setItem(40, null);
-						for (int i = 0; i < 36; i++) {
-							ItemStack itemStack = contents.get(new Random().nextInt(contents.size()));
-							inv.setItem(i, itemStack);
-							contents.remove(itemStack);
-						}
-						ItemStack itemStack = contents.get(new Random().nextInt(contents.size()));
-						inv.setItem(40, itemStack);
-						contents.remove(itemStack);
+						new BukkitRunnable() {
+							@Override
+							public void run() {
+								ArrayList<ItemStack> contents = new ArrayList<>();
+								PlayerInventory inv = victim.getInventory();
+								for (int i = 0; i < 36; i++) {
+									contents.add(inv.getItem(i));
+									inv.setItem(i, null);
+								}
+								contents.add(inv.getItem(40));
+								inv.setItem(40, null);
+								for (int i = 0; i < 36; i++) {
+									ItemStack itemStack = contents.get(new Random().nextInt(contents.size()));
+									inv.setItem(i, itemStack);
+									contents.remove(itemStack);
+								}
+								ItemStack itemStack = contents.get(new Random().nextInt(contents.size()));
+								inv.setItem(40, itemStack);
+								contents.remove(itemStack);
+							}
+						}.runTaskLater(CustomAPIPlugin.getInstance(), 1);
 
 					}
 				}

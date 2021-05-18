@@ -72,6 +72,8 @@ public class EffectManager {
 		buffData.put(CustomEffectType.PURGE, BuffType.NEUTRAL);
 		buffData.put(CustomEffectType.REWIND, BuffType.NEUTRAL);
 		buffData.put(CustomEffectType.FROSTBURN, BuffType.HARMFUL);
+		buffData.put(CustomEffectType.CALAMITY, BuffType.HARMFUL);
+		buffData.put(CustomEffectType.SILENCE, BuffType.HARMFUL);
 
 		rewindWriter();
 	}
